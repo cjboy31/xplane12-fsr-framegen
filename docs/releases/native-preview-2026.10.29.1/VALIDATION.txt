@@ -1,0 +1,44 @@
+NATIVE PLATFORM PREVIEW 1 — VALIDATION AND LIMITS
+Source: d6d5e4def07a995a25dbff9ec308da679bb43692
+Branch: experimental/native-platforms
+Build/check run: https://github.com/cjboy31/xplane-fsr-vulkan/actions/runs/40969984828
+
+Ubuntu 22.04 x86_64 / GCC 12.3:
+- 8 launcher configuration/environment/ownership/status tests passed.
+- Real lin.xpl load, enable, finite/invalid-camera report, disable/unload passed
+  against instrumented host stubs. This is not the simulator.
+- Native FSR 3.1.5 Vulkan backend and explicit layer compiled from pinned MIT source.
+- Lavapipe software-Vulkan FSR fixture, 48 frames per test:
+  Panning: bilinear 13.81 dB; FSR 16.62 dB; inverted-motion control 13.11 dB.
+  Static: bilinear 13.79 dB; FSR 17.66 dB. Vulkan validation errors: ZERO.
+- Layer portability: glibc <=2.34, GLIBCXX <=3.4.29, CXXABI <=1.3.13 gate passed.
+  74 Vulkan exports; no dependency on a Windows DLL or global libvulkan link.
+- Extracted package allow-list, hashes, help, probe install/update/removal and
+  external saved-choice preservation passed.
+
+macOS 14 Apple Silicon / AppleClang 15:
+- 8 launcher core tests passed, including POSIX link protection.
+- Universal arm64+x86_64 mac.xpl built, architecture check passed.
+- Real arm64 plugin load/enable/report/invalid-camera/disable/unload passed
+  against host stubs. Intel slice was built, not executed.
+- Ad-hoc signature/strict verification passed; Apple notarization is NOT provided.
+- Extracted package allow-list, hashes, help, owned install/update/removal and
+  saved-choice preservation passed.
+
+Additional local checks:
+- Linux runtime shader classifier on a Windows host against installed X-Plane
+  12.4.4-r1: 6,775 modules / 98 archives, expected EASU/SSR roles recognized;
+  five deliberately altered shader copies rejected. No simulator assets shipped.
+- Shared Tk launcher visually inspected on Windows: mode controls, readable
+  dropdown, saved feedback and retained mode after close/reopen. This is not
+  evidence of native Mac/Linux GUI appearance.
+- Public-source audit passed. Windows renderer/launcher sources unchanged.
+- Downloaded build artifact digests and all packaged payload hashes verified.
+
+IMPORTANT:
+No real X-Plane flight was run on Linux or Mac. No discrete GPU/driver validation,
+Wayland/X11/Steam runtime, long flight or controller hardware certification.
+Linux requires FSR supersampling ON and MSAA OFF. Native AA, VR, FSR 4, FG and
+Windows cockpit/ground safeguards are not ported. Camera-derived motion can ghost.
+Mac package is DIAGNOSTICS ONLY: no Metal upscaler, injection or AA enhancement.
+NR remains canceled. Regular Windows frame generation remains disabled.
