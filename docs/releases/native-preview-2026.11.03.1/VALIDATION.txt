@@ -1,0 +1,14 @@
+Native platform preview 3 - experimental Beta
+Version: 2.0.0-platform-preview.3
+Private source commit: b5cb99c29b2f06f1e139756113ec6c0361f59e7d
+Linux/macOS CI: successful; exact approved archives retained unchanged.
+Mac archive SHA256: 0c1190a7674d9173da94a64e2e75f797a097bbe850e6bab1b683ccb757fb8d91
+Linux archive SHA256: dc9318e93b457349e6b16cb594519f47168294407176d5c5fd10c0f1d09686bb
+All 9 Mac and 13 Linux payload checksum entries verified.
+Binary-only distribution with allowed runtime installation/launcher scripts and notices.
+No DLLs, bundled FSR 4 library, models or development source.
+Real X-Plane flight tests on Mac and Linux: NOT RUN.
+Mac: frame survey and experimental scene-only edge smoothing; no upscaling or frame generation.
+Linux: FSR 3.1 upscaling preview; optional FSR 4 requires a user-built library.
+Windows update feed remains Beta 3 / Release Candidates 0.7.10.
+Download: https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2026.11.03.1

@@ -1,5 +1,13 @@
 # Changes
 
+## Native platform preview 3 — experimental Beta (2026-11-03)
+
+- Mac: double-click installer with no Python needed. Install into each X-Plane 12 folder, start normally, and use Plugins > FSR Mac preview for Off, Frame survey or experimental scene-only Edge smoothing. Menus and instruments stay unchanged.
+- Mac does not upscale or generate frames yet. Please send Output/preferences/XPFSRMetalPreview.jsonl from a Frame survey flight to help future MetalFX work. The plugin is signed but not notarized; never disable Gatekeeper.
+- Linux: FSR 3.1 upscaling preview. Optional FSR 4 requires your own built library, which is not included. The launcher lists every X-Plane folder.
+- Neither platform has real X-Plane flight validation yet. Windows Betas remain on 2.0 Beta 3; Release Candidates remain on 0.7.10.
+- [Downloads, instructions and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2026.11.03.1). Older release notes below describe those versions at the time they shipped.
+
 ## 2.0.0-beta.windows.3
 
 Everything tested since Beta 2 is now in this Beta (owner approval, 2026-11-02). Choices marked experimental start Off. Checked live on one Windows PC; please report problems from Diagnostics.
