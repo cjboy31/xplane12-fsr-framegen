@@ -1,3 +1,13 @@
+# Changes
+
+## 2.0.0-beta.windows.6
+
+- **Reliable update notices:** switching channels no longer calls an older Release Candidate a new update. You can still choose the other channel yourself in the updater.
+- **Setup and channels:** keeps the verified folder setup, saved-choice protection and update checks from the current Beta work.
+- FSR, NR, frame generation and image-quality controls are unchanged from Beta 5. This is a reliability update, not a new rendering method or a promised FPS increase.
+- Windows installer and automated checks are verified separately from community flights. The existing Linux/Mac native preview remains available with its own limits.
+
+
 # Native Beta update — November 4, 2026
 
 **Experimental Beta — this is a native platform preview, not the complete Windows mod.** Windows users should use FSR 2.0 Beta 5.

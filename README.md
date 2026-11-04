@@ -6,7 +6,7 @@ Public downloads, updates and help. Development source is private.
 
 | Channel | Windows download |
 | --- | --- |
-| **Betas — latest features, still being tested** | [2.0 Beta 5 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v2.0.0-beta.windows.5/XPlane-FSR3-4-FrameGen-2.0.0-beta.windows.5-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.5) |
+| **Betas — latest features, still being tested** | [2.0 Beta 6 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v2.0.0-beta.windows.6/XPlane-FSR3-4-FrameGen-2.0.0-beta.windows.6-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.6) |
 | **Release Candidates — earlier tested baseline** | [0.7.10 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v0.7.10/XPlane-FSR3-4-FrameGen-0.7.10-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v0.7.10) |
 
 [Experimental Beta: Linux FSR 3.1 and Mac Metal preview 4](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2.0.0-platform-preview.4) · [Platform limits](docs/PLATFORM-STATUS.md)
@@ -22,7 +22,9 @@ The desktop Plugin Updater checks updates. Picture controls are inside X-Plane; 
 
 **Moving from before v2:** close X-Plane and back up your saved choices and imported models. If removing the old version, use its uninstaller; keep your saved settings and model files. Run the new v2 installer in the same application folder. The old 0.7.x updater cannot find v2 after the repository rename, so this first v2 install is manual. Later updates use the Plugin Updater.
 
-**Beta 5 combines current development in one installer.** It adds selected-channel in-sim update notices, adaptive spare caches, separate instrument-window routing and optional image-motion/NR-reuse/shading/stutter/cache measurement previews. New previews start Off. Independent multi-view FG remains unfinished; new flight/display checks go to community testers. [Read the limits and changes](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.5).
+**Beta 5 combines current development in one installer.** It adds selected-channel in-sim update notices, adaptive spare caches, separate instrument-window routing and optional image-motion/NR-reuse/shading/stutter/cache measurement previews. New previews start Off. Independent multi-view FG remains unfinished; new flight/display checks go to community testers. [Read the limits and changes](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.6).
+
+**Beta 6 improves update reliability.** It keeps all Beta 5 rendering features and fixes notices after switching update channels. Close X-Plane before installing; saved choices and local models are kept.
 
 ## Included features
 
