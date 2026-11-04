@@ -1,5 +1,26 @@
 # Changes
 
+**Windows Beta — one complete update for community testing.** New preview options start Off. Your saved choices are kept.
+
+- **Updates inside X-Plane:** a brief notice and Update indicator follow your selected Release Candidates or Betas channel. Checks run separately from rendering. Close X-Plane before installing.
+- **Separate instrument windows:** the main FG view can present alongside normal instrument windows. Their redraws do not increase the main FPS count. Mixed batches use an extra wait and may lower FPS. FG for several independent 3D views and extracting 2D panels from the main scene are still unfinished.
+- **Memory:** spare caches follow available video memory and 6/8/10/12/16/24/32 GB capacity tiers. Quality choices stay. This cannot prevent every out-of-memory error or make every mode work on every GPU.
+- **All current previews in this package:** image-motion matching, NR result reuse, adaptive shading, short stutter stand-in frames (FG Off), shader caching and pass-time measurement. Each has help and can be turned Off. Compare trails, flicker, detail and pacing; results vary.
+- **Setup and support:** one app can serve several X-Plane folders. Includes current camera/motion fixes and OBS compatibility status. The old cockpit-screen restore/alignment workaround is retired. Normal cockpit motion and NR choices remain.
+
+Automated Windows build, settings/UI/updater, GPU presentation/mixed-window/resource/motion and installer lifecycle checks passed. No owner-PC flight or physical multi-monitor compatibility is claimed for this update; those checks go to Beta testers. Memory tiers were simulated, not tested on seven physical cards. FSR 4 and NR need supported hardware; model weights and NVIDIA DLLs are not included.
+
+Linux/Mac preview development is now on the same Beta branch. New native packages await native build validation; existing [Linux FSR 3.1 / Mac Metal preview](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2026.11.03.1) stays available with its existing limits. This Windows package adds no Linux/Mac NR or FG.
+
+**Updating from FSR 0.7.x:** the old updater cannot see v2 because of the rename. Run the new Setup.exe once; your settings are kept. For a clean reinstall, use the old uninstaller, keep saved choices/models, then run the new installer in the same app folder.
+
+[Full Beta 3 notes](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.3). Release Candidates remain on 0.7.10. Private source provenance: `50844aad9448d86371cf2658e2adbfa93578d691`. Download hashes are in SHA256SUMS.txt.
+
+Questions or bug reports: https://discord.gg/yh396QNgHZ
+
+---
+
+
 ## Native platform preview 3 — experimental Beta (2026-11-03)
 
 - Mac: double-click installer with no Python needed. Install into each X-Plane 12 folder, start normally, and use Plugins > FSR Mac preview for Off, Frame survey or experimental scene-only Edge smoothing. Menus and instruments stay unchanged.
