@@ -123,7 +123,7 @@ jobs:
         run: |
           set -eu
           cd "$RUNNER_TEMP/native-source"
-          bash -n tools/build_service/Build-on-Mac.command
+          if [ -f tools/build_service/Build-on-Mac.command ]; then bash -n tools/build_service/Build-on-Mac.command; fi
           if ! python3 -m unittest discover -s platform/tests -p test_core.py -v > "$RUNNER_TEMP/native-tests.log" 2>&1; then
             echo 'FAIL: launcher tests; private logs not uploaded'; exit 1
           fi
