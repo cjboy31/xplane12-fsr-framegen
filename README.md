@@ -9,7 +9,7 @@ Public downloads, updates and help. Development source is private.
 | **Betas — latest features, still being tested** | [2.0 Beta 5 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v2.0.0-beta.windows.5/XPlane-FSR3-4-FrameGen-2.0.0-beta.windows.5-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.5) |
 | **Release Candidates — earlier tested baseline** | [0.7.10 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v0.7.10/XPlane-FSR3-4-FrameGen-0.7.10-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v0.7.10) |
 
-[Experimental Beta: Linux FSR 3.1 and Mac Metal preview 3](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2026.11.03.1) · [Platform limits](docs/PLATFORM-STATUS.md)
+[Experimental Beta: Linux FSR 3.1 and Mac Metal preview 4](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2.0.0-platform-preview.4) · [Platform limits](docs/PLATFORM-STATUS.md)
 
 ## Install and open the controls
 

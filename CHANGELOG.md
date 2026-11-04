@@ -1,3 +1,23 @@
+# Native Beta update — November 4, 2026
+
+**Experimental Beta — this is a native platform preview, not the complete Windows mod.** Windows users should use FSR 2.0 Beta 5.
+
+- **Linux:** FSR 3.1 upscaling preview. Optional FSR 4 uses a compatible library you supply yourself; none is included. The launcher lists your X-Plane folders. MSAA must be Off. Frame generation and NR are not available in this native package.
+- **Mac:** double-click Install-on-Mac.command, choose an X-Plane folder, then start X-Plane normally. In Plugins > FSR Mac preview, choose Off, Frame survey or experimental scene-only edge smoothing.
+- **Development MetalFX option:** on supported Macs with macOS 13+, the menu also offers spatial upscaling. Lower X-Plane's Rendering Resolution below Full first. If the scene cannot be separated safely, it keeps X-Plane's normal picture. No Mac frame generation is included.
+- **Please share a Frame survey log:** Output/preferences/XPFSRMetalPreview.jsonl. Review it before sharing. Surveys help check real Mac frame layouts.
+- Mac binaries include Apple Silicon and Intel slices with basic signatures. They are not notarized. If blocked, approve this specific plugin in Privacy & Security; never disable Gatekeeper.
+
+Native builds, automated rendering/lifecycle checks, package contents and hashes passed. This is not a real Linux or Mac X-Plane flight test. Mac Intel execution and broad GPU compatibility remain unverified. Settings and unrelated files are preserved by the tested installers.
+
+Download the archive for your platform, extract all files and read INSTALLATION-AND-USE.txt. Existing downloads and Windows update channels are unchanged.
+
+Private source provenance: `c144bec2a89d30aa76fb64e3d813828b64810d4e`. Hashes: SHA256SUMS.txt.
+
+Questions or bug reports: https://discord.gg/yh396QNgHZ
+
+---
+
 # Changes
 
 **Windows Beta — one complete update for community testing.** New preview options start Off. Your saved choices are kept.
