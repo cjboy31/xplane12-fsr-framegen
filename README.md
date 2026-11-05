@@ -1,42 +1,38 @@
-# FSR 3.1 / 4.1 + Frame Gen for X-Plane 12
+# Aerolux for X-Plane 12
 
-Public downloads, updates and help. Development source is private.
+FSR, Native AA and optional frame generation in one in-sim panel. Public downloads and help; development source is private.
 
 ## Downloads
 
 | Channel | Windows download |
 | --- | --- |
-| **Betas — latest features, still being tested** | [2.0 Beta 6 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v2.0.0-beta.windows.6/XPlane-FSR3-4-FrameGen-2.0.0-beta.windows.6-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.6) |
+| **Betas — latest features, still being tested** | [Aerolux 2.0 Beta 7 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v2.0.0-beta.windows.7/XPlane-FSR3-4-FrameGen-2.0.0-beta.windows.7-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.7) |
 | **Release Candidates — earlier tested baseline** | [0.7.10 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v0.7.10/XPlane-FSR3-4-FrameGen-0.7.10-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v0.7.10) |
 
-[Experimental Beta: Linux FSR 3.1 and Mac Metal preview 4](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2.0.0-platform-preview.4) · [Platform limits](docs/PLATFORM-STATUS.md)
+[Experimental Linux FSR 3.1 and Mac Metal preview 4](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2.0.0-platform-preview.4) · [Platform limits](docs/PLATFORM-STATUS.md). These keep their separate features; the Windows update does not replace them.
 
-## Install and open the controls
+## Start here
 
-1. Close X-Plane. Download the Windows installer above and run it.
-2. Select your own X-Plane folder. Keep in-sim integration enabled.
-3. Start X-Plane normally and load a flight.
-4. Open **Plugins > FSR 3.1 / 4.1 + Frame Gen > Open settings**.
+1. Close X-Plane and run the installer. Select your X-Plane folder. Keep the existing app folder when updating.
+2. Start X-Plane normally and load a flight.
+3. Open **Plugins > Aerolux > Open settings**.
+4. Choose **Pure** to smooth edges at Full resolution, **Boost** for FSR, or **Original** for X-Plane's own picture. Restart when asked.
+5. Begin with NR, frame generation and Beta previews Off. Compare one change at a time. Hover over **?** for help.
 
-The desktop Plugin Updater checks updates. Picture controls are inside X-Plane; FSR follows the simulator's Rendering Resolution slider. Start with NR and frame generation Off, then compare one feature at a time. Read [installation help](docs/INSTALLATION.md) and [hardware/settings guidance](docs/HARDWARE-AND-SETTINGS.md).
+Boost starts with FSR 3.1.6 and follows X-Plane's Rendering Resolution slider. Pure includes SMAA, FXAA, CMAA 2 and experimental temporal methods such as TAA + SMAA. Look adds optional sharpening and colour adjustments. Diagnostics has the raw/generated/total frame counter, current logs and report tools. Read the [installation guide](docs/INSTALLATION.md).
 
-**Moving from before v2:** close X-Plane and back up your saved choices and imported models. If removing the old version, use its uninstaller; keep your saved settings and model files. Run the new v2 installer in the same application folder. The old 0.7.x updater cannot find v2 after the repository rename, so this first v2 install is manual. Later updates use the Plugin Updater.
+**Moving from FSR v2:** this is a normal Beta update. Saved choices and local models are kept. **Moving from separate Native AA:** run this installer once; setup imports its settings and removes only unchanged owned files. Edited files are protected. **Moving from FSR 0.7.x:** run the new installer once because the old updater cannot find v2 after the repository rename.
 
-**Beta 5 combines current development in one installer.** It adds selected-channel in-sim update notices, adaptive spare caches, separate instrument-window routing and optional image-motion/NR-reuse/shading/stutter/cache measurement previews. New previews start Off. Independent multi-view FG remains unfinished; new flight/display checks go to community testers. [Read the limits and changes](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.6).
+## Features and limits
 
-**Beta 6 improves update reliability.** It keeps all Beta 5 rendering features and fixes notices after switching update channels. Close X-Plane before installing; saved choices and local models are kept.
-
-## Included features
-
-- FSR upscaling to build a larger output picture, or native-resolution AA to smooth edges.
-- Optional frame generation, frame-pacing choices and a real/generated/total frame counter.
-- Optional neural rendering with user-supplied supported models.
-- Live supported controls, saved choices, ? help, diagnostics and an in-sim changelog.
-
-NR and frame generation depend on hardware and drivers and can cost performance. Close the settings panel to resume FG. Use one scene processor at a time if Native AA is also installed. No models are supplied.
+- Pure and Boost can use optional frame generation and neural rendering on supported hardware. NR needs your own supported model; no NVIDIA DLL or model weights are supplied.
+- New previews, including the own FSR 3 build, start Off. Temporal AA, XeSS and other previews still need community testing.
+- In-sim update notices follow your selected channel. Close X-Plane before installing. The desktop app only updates plugins.
+- Separate instrument windows keep native frames; FG for multiple independent 3D views remains unfinished. NR and FG can cost performance. No setting guarantees more FPS or removes every artifact.
+- Windows automated checks and limited live checks on one PC do not prove compatibility with every aircraft, graphics card or display. FSR 4.1.2 has separate runtime compatibility limits; use FSR 3.1.6 if it fails.
 
 ## Help and licensing
 
 [Join Discord](https://discord.gg/yh396QNgHZ) · [All downloads](https://github.com/cjboy31/xplane12-fsr-framegen/releases) · [Changelog](CHANGELOG.md) · [Licensing](LICENSING.md)
 
-Download the installer or RAR listed under Assets. GitHub's automatic “Source code” archives contain this download page, not the plugin's development source. Previously released packages keep their existing licenses.
+Download the installer or RAR under Assets. GitHub's automatic “Source code” archives contain this download page, not the plugin's development source. Earlier releases and required third-party notices keep their licenses.

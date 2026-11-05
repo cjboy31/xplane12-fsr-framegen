@@ -1,5 +1,38 @@
 # Changes
 
+## 2.0.0-beta.windows.7
+
+**Windows Beta — Aerolux brings the FSR and Native AA mods together.** It is the next normal update on the existing Betas channel. Main / Release Candidates stay on 0.7.10.
+
+- **Pure, Boost or Original:** smooth edges with Native AA, use FSR, or keep X-Plane's own picture. One black, gold and purple panel has short help and an in-sim changelog.
+- **Every Native AA method:** SMAA, FXAA, CMAA 2, TAA, TAA + SMAA, TAA + FXAA and SMAA T2x. Temporal methods remain experimental. Pure can also use optional NR and extra frames on supported hardware.
+- **Look:** optional sharpening, clarity and colour controls apply live.
+- **Smoother setup:** FSR and XeSS prepare rendering settings through one background worker. Quick resolution changes and failed preparation can recover; exit logs keep the summary needed for support.
+- **Optional previews:** Intel XeSS with your own compatible library; the own FSR 3.1.4 build with supported 16-bit math and optional 64-wide waves; NR result reuse and NR after the frame; image-motion matching, adaptive shading, shader caching, pass measurements and short stand-in frames. New previews start Off. The own FSR luma-history format was corrected after GPU validation found a mismatch.
+- **Corrections from live checks:** enable the supported GPU feature required by AMD's 16-bit shaders. The optional pass survey skips invalid or expired timings instead of showing impossible costs.
+- **Kept:** live NR settings and model import, pacing choices, raw/generated/total frame counter, memory-headroom safeguards, update notices, multiple simulator folders and protected saved choices.
+
+### Install or update
+
+Close X-Plane and run **XPlane-FSR3-4-FrameGen-2.0.0-beta.windows.7-Setup.exe**. Select your simulator and keep the existing app folder when updating. Load a flight, then open **Plugins > Aerolux > Open settings**. Start with FSR 3.1.6 (Boost) or SMAA (Pure), with NR, extra frames and previews Off. Add one option at a time.
+
+FSR v2 Beta users receive this through the normal updater. Separate Native AA users run this installer once; setup imports their choices and removes only unchanged owned files. Modified and unknown files are protected. Models are kept; no NVIDIA DLL or model weights are included.
+
+Updating from FSR 0.7.x: the old updater can't see v2 because of the rename. Run the new Setup.exe once; your settings are kept.
+
+### Tested and still experimental
+
+Windows regression checks, real-GPU fixtures, limited live checks on one PC, and the exact installer lifecycle/integrity checks passed. These are not proof of every aircraft, overlay, display or graphics card. No general FPS gain is promised. New previews remain optional, Off by default. The separate AMD FSR 4.1.2 runtime has known compatibility limits; use FSR 3.1.6 if it fails. Independent multi-view FG and broader flight testing remain unfinished.
+
+Linux and Mac keep their [existing preview 4 downloads](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2.0.0-platform-preview.4) and platform limits. This Windows Beta does not add Linux/Mac NR or FG or merge their rendering engines.
+
+Private build provenance: `e702f7e98d676240738cef45e33c9a5697629932`. Public tag points to a documentation snapshot. Check **SHA256SUMS.txt** for the downloads. Earlier releases and tags are preserved.
+
+Questions or bug reports: https://discord.gg/yh396QNgHZ
+
+
+---
+
 ## 2.0.0-beta.windows.6
 
 - **Reliable update notices:** switching channels no longer calls an older Release Candidate a new update. You can still choose the other channel yourself in the updater.
