@@ -1,5 +1,40 @@
 # Changes
 
+## 2.0.0-rc.2
+
+# Aerolux 2.0 Release Candidate 2
+
+Windows Release Candidate. Optional previews remain labeled as experimental.
+
+- Fixes an unsupported neural-rendering shader path. NR checks the graphics
+  driver's output before loading your model.
+- If ACO Mode is not supported by that driver, standard NR runs instead.
+  Your saved ACO choice is kept.
+- Adds the RC2 panel and Manager animation updates and more NR controls.
+- Recovers picture processing after camera updates pause in simulator menus.
+- Recognizes X-Plane 12.4.3 as well as 12.4.4; unknown versions show a clear status.
+- Keeps saved settings, imported models and enrolled X-Plane folders.
+
+Close X-Plane and Aerolux Manager, then run the new Setup.exe in your existing
+app folder. Do not uninstall first. If you are coming from Beta 8 or Beta 9,
+run this Setup.exe directly once if the old update button gets stuck. Choose
+Release Candidates in Updates for future RC updates.
+
+The NR correction passed real-GPU validation and a short Windows X-Plane
+12.4.4 flight with live Off/On switching. This is not a promise of better FPS
+or compatibility with every aircraft, driver or display. Existing Linux and
+Mac previews are unchanged. New NVIDIA Beta features are not included here.
+
+Private source build: 6dac216bee408053eb37c345f1f37f8a7017c6de.
+Original project and third-party notices are included. No model weights ship.
+
+Optional cloud effects, additional NR inputs and other previews remain experimental and start Off. Their inclusion is not a claim that every preview passed flight testing. Multi-view frame generation remains unfinished. FSR 4.1.2 has known runtime limits; use FSR 3.1.6 if it fails.
+
+Questions or bug reports: https://discord.gg/yh396QNgHZ
+
+
+---
+
 ## 2.0.0-rc.1
 
 # Aerolux 2.0 Release Candidate 1 (Windows)

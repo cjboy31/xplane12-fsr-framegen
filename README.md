@@ -4,9 +4,9 @@ Pure anti-aliasing, Boost upscaling and optional frame generation in one in-sim 
 
 ## Download for Windows
 
-**[Download Aerolux 2.0 Release Candidate 1](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v2.0.0-rc.1/XPlane-FSR3-4-FrameGen-2.0.0-rc.1-Setup.exe)** · [Changes, instructions and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-rc.1)
+**[Download Aerolux 2.0 Release Candidate 2](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v2.0.0-rc.2/XPlane-FSR3-4-FrameGen-2.0.0-rc.2-Setup.exe)** · [Changes, instructions and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-rc.2)
 
-This is a Release Candidate for final checks, not a final release. GitHub's Pre-release badge does not mean you need the Betas channel. Choose **Release Candidates** in Aerolux Manager.
+RC2 includes the neural-rendering shader correction and camera-update recovery. This is a Release Candidate for final checks, not a final release. GitHub's Pre-release badge does not mean you need the Betas channel. Choose **Release Candidates** in Aerolux Manager.
 
 ## Updating from a Beta
 
