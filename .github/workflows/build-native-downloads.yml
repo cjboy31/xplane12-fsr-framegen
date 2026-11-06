@@ -110,56 +110,61 @@ jobs:
           git checkout --quiet --detach FETCH_HEAD
           git remote remove origin
           echo 'PASS: exact private branch/SHA checked out; read key removed before build'
-      - name: Linux check dependencies (runner only)
-        if: inputs.source_commit != ''
+      - name: Native Linux dependencies
+        if: inputs.source_commit != '' && runner.os == 'Linux'
         run: |
-          set -eu
           sudo apt-get update -qq > "$RUNNER_TEMP/dependencies.log" 2>&1
-          sudo apt-get install -y -qq g++ libvulkan-dev glslang-tools mesa-vulkan-drivers vulkan-validationlayers python3-yaml python3-pip >> "$RUNNER_TEMP/dependencies.log" 2>&1
-          sudo /usr/bin/python3 -m pip install --disable-pip-version-check numpy==2.2.6 >> "$RUNNER_TEMP/dependencies.log" 2>&1
-          git clone -q --depth 1 --branch v1.4.328 https://github.com/KhronosGroup/Vulkan-Headers "$RUNNER_TEMP/check-vulkan-headers" >> "$RUNNER_TEMP/dependencies.log" 2>&1
-      - name: Check exact private candidate; encrypted diagnostics only
+          sudo apt-get install -y cmake g++-12 libvulkan-dev glslang-tools mesa-vulkan-drivers vulkan-validationlayers python3-tk xvfb >> "$RUNNER_TEMP/dependencies.log" 2>&1
+      - name: Build and test privately; no compiler/source log output
         if: inputs.source_commit != ''
         env:
-          EXPECTED_SHA: ${{ inputs.source_commit }}
+          CC: ${{ runner.os == 'Linux' && 'gcc-12' || 'clang' }}
+          CXX: ${{ runner.os == 'Linux' && 'g++-12' || 'clang++' }}
         run: |
           set -eu
           cd "$RUNNER_TEMP/native-source"
-          test ! -e "$RUNNER_TEMP/native-source-key"
-          test ! -e "$RUNNER_TEMP/native-known-hosts"
-          test -z "$(git remote)"
-          export CPLUS_INCLUDE_PATH="$RUNNER_TEMP/check-vulkan-headers/include"
-          /usr/bin/python3 - <<'PY' > "$RUNNER_TEMP/native-build.log" 2>&1
-          import importlib.util,os,sys
-          spec=importlib.util.spec_from_file_location('checks','tools/run_source_checks.py')
-          checks=importlib.util.module_from_spec(spec);spec.loader.exec_module(checks)
-          original=checks.steps
-          selected={'Cloud glory and shadow (experimental extra) - Mie table, geometry and shader on lavapipe', 'Smart GPU helper capability survey on lavapipe (G0)'}
-          checks.steps=lambda text: (item for item in original(text) if item[1] in selected)
-          sys.argv=['checks','--commit',os.environ['EXPECTED_SHA'],'--receipt',os.environ['RUNNER_TEMP']+'/source-checks.json']
-          rc=checks.main()
-          if rc: print(open(os.environ['RUNNER_TEMP']+'/source-checks.json').read())
-          sys.exit(rc)
-          PY
-          echo 'PASS: exact private candidate source policy and portable checks'
-      - name: Gate the private check receipt (no product source)
+          if [ -f tools/build_service/Build-on-Mac.command ]; then bash -n tools/build_service/Build-on-Mac.command; fi
+          if ! python3 -m unittest discover -s platform/tests -p test_core.py -v > "$RUNNER_TEMP/native-tests.log" 2>&1; then
+            echo 'FAIL: launcher tests; private logs not uploaded'; exit 1
+          fi
+          if ! python3 platform/build_native.py --output "$RUNNER_TEMP/native-packages" > "$RUNNER_TEMP/native-build.log" 2>&1; then
+            python3 -c 'import json,pathlib,re,sys; t=pathlib.Path(sys.argv[1]).read_text(errors="replace"); print(json.dumps({"phase":"native-build-tests-package","status":"FAIL","httpStatus":re.findall(r"HTTP Error ([0-9]{3})",t)[-3:],"exceptionClasses":re.findall(r"^([A-Za-z.]*Error):",t,re.M)[-4:],"locations":[b+":"+n for b,n in re.findall(r"File \"[^\"]*/([^/\"]+)\", line ([0-9]+)",t)[-6:]],"compilerLocations":re.findall(r"([A-Za-z0-9_.-]+\.(?:cpp|hpp|inc|mm)):[0-9]+:[0-9]+: (?:fatal )?error:",t)[-5:]}))' "$RUNNER_TEMP/native-build.log"
+            echo 'FAIL: native build/tests/package; private logs not uploaded'; exit 1
+          fi
+          echo 'PASS: native build, lifecycle, backend and package checks'
+      - name: Independent binary-only archive gate
         if: inputs.source_commit != ''
         env:
           EXPECTED_SHA: ${{ inputs.source_commit }}
         run: |
+          set -eu
           python3 - <<'PY'
-          import hashlib,json,os,pathlib,zipfile
-          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'source-checks.json'
-          data=p.read_bytes(); r=json.loads(data)
-          assert r['commit']==os.environ['EXPECTED_SHA'] and r['verdict']=='PASS'
-          assert r['failed']==0 and r['passed']==len(r['steps']) and r['passed']==2
-          assert r['githubActions'] is False
-          assert all(s['status']=='PASS' for s in r['steps'])
-          stage=pathlib.Path(os.environ['GITHUB_WORKSPACE'])/'checked-downloads';stage.mkdir()
-          with zipfile.ZipFile(stage/'source-check-receipt.zip','w',zipfile.ZIP_DEFLATED) as z:
-              z.writestr('SOURCE-CHECKS.json',data)
-              z.writestr('SHA256SUMS.txt',hashlib.sha256(data).hexdigest()+'  SOURCE-CHECKS.json\n')
-          print('PASS: independently checked receipt; no source in artifact')
+          import hashlib,json,os,pathlib,tarfile,zipfile
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'native-packages'
+          out=pathlib.Path(os.environ['GITHUB_WORKSPACE'])/'checked-downloads'; out.mkdir()
+          archives=list(root.glob('*.tar.gz'))+list(root.glob('*.zip')); assert len(archives)==1
+          for archive in archives:
+              if archive.suffix=='.zip':
+                  with zipfile.ZipFile(archive) as z:
+                      files={i.filename:z.read(i) for i in z.infolist() if not i.is_dir()}
+              else:
+                  with tarfile.open(archive) as z:
+                      assert all(m.isfile() or m.isdir() for m in z.getmembers())
+                      files={m.name:z.extractfile(m).read() for m in z.getmembers() if m.isfile()}
+              allowed={'core.py','launcher.py','LICENSE.txt','INSTALLATION-AND-USE.txt','BUILD-INFO.json','PAYLOAD-SHA256SUMS.txt','Launch.command','Install-on-Mac.command','probe/64/mac.xpl','Launch-FSR','probe/64/lin.xpl','VkLayer_xplane_fsr3.json','libVkLayer_xplane_fsr3.so','licenses/X-Plane-SDK.txt','licenses/JonathanOrr-xplane-fsr3-MIT.txt','licenses/AMD-FidelityFX-MIT.txt','licenses/Khronos-Vulkan-Headers-MIT.txt'}
+              payload={k.split('/',1)[1]:v for k,v in files.items()}
+              assert len({k.split('/')[0] for k in files})==1
+              assert set(payload)<=allowed and all('..' not in pathlib.PurePosixPath(k).parts for k in payload)
+              info=json.loads(payload['BUILD-INFO.json']); assert info['source_commit']==os.environ['EXPECTED_SHA']
+              lines=payload['PAYLOAD-SHA256SUMS.txt'].decode().splitlines(); listed=set()
+              for line in lines:
+                  digest,name=line.split('  ',1); assert name not in listed; listed.add(name)
+                  assert hashlib.sha256(payload[name]).hexdigest()==digest
+              assert listed==set(payload)-{'PAYLOAD-SHA256SUMS.txt'}
+              digest=hashlib.sha256(archive.read_bytes()).hexdigest()
+              (out/archive.name).write_bytes(archive.read_bytes())
+              (out/(archive.name+'.sha256')).write_text(digest+'  '+archive.name+'\n')
+              print('PASS:',archive.name,digest)
           PY
       - name: Seal private build results (including failure diagnostics)
         if: always() && inputs.source_commit != ''
@@ -217,7 +222,7 @@ jobs:
           import os,pathlib,shutil
           temporary=pathlib.Path(os.environ['RUNNER_TEMP']).resolve()
           workspace=pathlib.Path(os.environ['GITHUB_WORKSPACE']).resolve()
-          for base,names in ((temporary,('native-source','native-source-key','native-known-hosts','native-packages','native-crypto','crypto-requirements.txt','crypto-install.log','native-build.log','native-tests.log','dependencies.log','source-checks.json')),(workspace,('checked-downloads','sealed-downloads'))):
+          for base,names in ((temporary,('native-source','native-source-key','native-known-hosts','native-packages','native-crypto','crypto-requirements.txt','crypto-install.log','native-build.log','native-tests.log','dependencies.log')),(workspace,('checked-downloads','sealed-downloads'))):
               for name in names:
                   path=base/name
                   assert path.parent.resolve()==base
