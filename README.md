@@ -1,43 +1,50 @@
 # Aerolux for X-Plane 12
 
-FSR, Native AA and optional frame generation in one in-sim panel. Public downloads and help; development source is private.
+Pure anti-aliasing, Boost upscaling and optional frame generation in one in-sim panel. Public downloads and help; development source is private.
 
-## Downloads
+## Download for Windows
 
-| Channel | Windows download |
-| --- | --- |
-| **Betas — latest features, still being tested** | [Aerolux 2.0 Beta 9 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v2.0.0-beta.windows.9/XPlane-FSR3-4-FrameGen-2.0.0-beta.windows.9-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.9) |
-| **Release Candidates — earlier tested baseline** | [0.7.10 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v0.7.10/XPlane-FSR3-4-FrameGen-0.7.10-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v0.7.10) |
+**[Download Aerolux 2.0 Release Candidate 1](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v2.0.0-rc.1/XPlane-FSR3-4-FrameGen-2.0.0-rc.1-Setup.exe)** · [Changes, instructions and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-rc.1)
 
-[Experimental Linux FSR 3.1 and Mac Metal preview 4](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2.0.0-platform-preview.4) · [Platform limits](docs/PLATFORM-STATUS.md). These keep their separate features; the Windows update does not replace them.
+This is a Release Candidate for final checks, not a final release. GitHub's Pre-release badge does not mean you need the Betas channel. Choose **Release Candidates** in Aerolux Manager.
+
+## Updating from a Beta
+
+1. Close X-Plane and Manager.
+2. Run the RC Setup above directly once. Keep the existing app folder and select your X-Plane folder. **Do not uninstall first.** Settings, local models and your enrolled simulator copies are kept.
+3. In **Manager > Updates**, choose **Release Candidates** for future RC updates.
+
+Beta 8 and Beta 9's old update button can get stuck after downloading. Use the direct RC installer to replace that old program. [Beta 9 remains archived for recovery](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.9); it is not the recommended download. Manager can also keep a previous installer locally for **Backups > Go back**.
+
+Moving from separate Native AA? Run the RC installer once. Pure replaces that mod and keeps its AA choices. Setup removes only unchanged files it owns; edited and unknown files are protected. Moving from FSR 0.7.x? Run this Setup once because the old updater cannot follow the repository rename.
 
 ## Start here
 
-1. Close X-Plane and run the installer. Select your X-Plane folder. Keep the existing app folder when updating.
-2. Start X-Plane normally and load a flight.
-3. Open **Plugins > Aerolux > Open settings**.
-4. Choose **Pure** to smooth edges at Full resolution, **Boost** for FSR, or **Original** for X-Plane's own picture. Restart when asked.
-5. Begin with NR, frame generation and Beta previews Off. Compare one change at a time. Hover over **?** for help.
+Start X-Plane normally and load a flight. Open **Plugins > Aerolux > Open settings**.
 
-Boost starts with FSR 3.1.6 and follows X-Plane's Rendering Resolution slider. Pure includes SMAA, FXAA, CMAA 2 and experimental temporal methods such as TAA + SMAA. Look adds optional sharpening and colour adjustments. Diagnostics has the raw/generated/total frame counter, current logs and report tools. Read the [installation guide](docs/INSTALLATION.md).
+- **Pure:** smooth edges at your screen's full resolution. Includes SMAA, FXAA, CMAA 2 and experimental temporal choices such as TAA + SMAA.
+- **Boost:** use FSR AA or upscaling. Begin with FSR 3.1.6. Full input keeps native resolution; lower Rendering Resolution choices draw fewer pixels and rebuild the picture.
+- **Original:** use X-Plane's own picture.
+- **Look:** optional sharpening and colour adjustments.
 
-**Moving from FSR v2:** this is a normal Beta update. Saved choices and local models are kept. **Moving from separate Native AA:** run this installer once; setup imports its settings and removes only unchanged owned files. Edited files are protected. **Moving from FSR 0.7.x:** run the new installer once because the old updater cannot find v2 after the repository rename.
+Start with NR, frame generation and preview options Off. Compare one change at a time. Use **?** for short help and **Changelog** for changes. [Read the installation guide](docs/INSTALLATION.md).
 
-**Beta 9:** fixes a Manager message that called an older build "ready" after a channel change. [Beta 8](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.8) stays available.
-
-**Beta 8:** adds Aerolux Manager, settings backups, local health reports and matching icons. Native AA is Pure inside Aerolux; its separate updater is retired. [Previous Beta 7](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.7) stays available.
+**Aerolux Manager** lists your X-Plane copies, installs or repairs the mod, saves settings backups and shows What's new before an update. Health reports stay on your PC. Picture settings stay in the simulator. Close X-Plane before installing, repairing, removing or restoring.
 
 ## Features and limits
 
 - Pure and Boost can use optional frame generation and neural rendering on supported hardware. NR needs your own supported model; no NVIDIA DLL or model weights are supplied.
-- New previews, including the own FSR 3 build, start Off. Temporal AA, XeSS and other previews still need community testing.
-- In-sim update notices follow your selected channel. Close X-Plane before installing. Aerolux Manager lists your simulator copies, installs and repairs the mod, saves settings backups and shows what changed before an update. Health reports stay on your PC.
-- Separate instrument windows keep native frames; FG for multiple independent 3D views remains unfinished. NR and FG can cost performance. No setting guarantees more FPS or removes every artifact.
-- Windows automated checks and limited live checks on one PC do not prove compatibility with every aircraft, graphics card or display. FSR 4.1.2 has separate runtime compatibility limits; use FSR 3.1.6 if it fails.
+- Diagnostics has a raw/generated/total frame counter, current logs and report tools. Update notices follow your selected channel.
+- New preview choices start Off; updates keep saved choices. Temporal AA, XeSS, the own FSR 3 build and other previews still need community testing.
+- Separate instrument windows keep native frames. FG for multiple independent 3D views remains unfinished. NR and FG can cost performance; no option guarantees higher FPS or removes every artifact.
+- Windows automated checks and limited live checks on one PC do not prove compatibility with every aircraft, GPU or display. FSR 4.1.2 has known runtime limits; use FSR 3.1.6 if it fails.
+
+## Linux and Mac
+
+[Separate Linux FSR 3.1 and Mac Metal preview 4](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2.0.0-platform-preview.4) · [Platform limits](docs/PLATFORM-STATUS.md). Their existing features are unchanged. This Windows RC does not add Linux/Mac NR or FG, or claim their flight testing.
 
 ## Help and licensing
 
-[Join Discord](https://discord.gg/yh396QNgHZ) · [All downloads](https://github.com/cjboy31/xplane12-fsr-framegen/releases) · [Changelog](CHANGELOG.md) · [Licensing](LICENSING.md)
+[Join Discord](https://discord.gg/yh396QNgHZ) · [Changelog](CHANGELOG.md) · [Earlier downloads](https://github.com/cjboy31/xplane12-fsr-framegen/releases) · [Licensing](LICENSING.md)
 
-Download the installer or RAR under Assets. GitHub's automatic “Source code” archives contain this download page, not the plugin's development source. Earlier releases and required third-party notices keep their licenses.
-
+GitHub's automatic Source code archives contain this download documentation, not development source. Earlier releases and all required third-party notices keep their licenses.

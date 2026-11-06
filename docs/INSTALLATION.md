@@ -1,4 +1,7 @@
-Aerolux 2.0 Beta 9 (Windows)
+Aerolux 2.0 Release Candidate 1 (Windows)
+
+MOVING FROM BETA 8 OR 9
+Close X-Plane and Manager, then run this version's Setup.exe directly once. The old Manager's update button can get stuck; a new download cannot repair that old running program. Keep the existing mod app folder. Setup keeps settings, local models and both enrolled simulator copies. Do not uninstall first. In Manager > Updates, select Release Candidates for future RC updates. If you go back, a kept older setup is available locally; public Beta downloads are not required for that recovery.
 
 INSTALL
 1. Close X-Plane and the Aerolux Manager (formerly Plugin Updater).

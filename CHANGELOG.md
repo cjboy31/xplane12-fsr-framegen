@@ -1,5 +1,41 @@
 # Changes
 
+## 2.0.0-rc.1
+
+# Aerolux 2.0 Release Candidate 1 (Windows)
+
+**Release Candidate — ready for final checks, not a final release.** Pure anti-aliasing, Boost upscaling and optional frame generation remain together in Aerolux.
+
+## What changed
+
+- **Updates can finish:** fixed Manager getting stuck after a verified download while Setup waited for it to close. Windows can send another timer during that handoff; it no longer locks Manager or starts Setup twice.
+- **Keep a way back:** the Release Candidate can keep your previous Windows Beta installer for recovery. Backups > Go back uses that local installer.
+- Keeps the Beta 9 correction: switching channels no longer calls an older build “ready.” The Updates window still explains what you chose.
+- Keeps Aerolux Manager, settings backups, local support reports, matching icons and the merged Pure / Boost / Original panel. There is no separate Native AA updater.
+
+## Moving from Beta 8 or Beta 9
+
+1. Close X-Plane and Aerolux Manager.
+2. Download **XPlane-FSR3-4-FrameGen-2.0.0-rc.1-Setup.exe** and run it directly once. Keep the existing app folder and choose your X-Plane folder. **Do not uninstall first.** Saved image choices, local models and enrolled simulator copies are kept.
+3. Open Manager > Updates and select **Release Candidates** for future RC updates. Start X-Plane normally; picture controls are under **Plugins > Aerolux > Open settings**.
+
+The old Beta 8/9 update button can get stuck. A new download cannot repair that already-running old program; use the direct installer above. The RAR contains the same Setup. If needed, [Beta 9 remains archived for recovery](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.9).
+
+For FSR 0.7.x, also run the new Setup once because its old updater cannot follow the repository rename. Older installed apps cannot be remotely forced onto another channel.
+
+## Verification and limits
+
+Fresh Windows build, full regression, real-GPU feature checks and install/update/uninstall/reinstall checks passed. Live checks covered the repaired download/install handoff, a real rollback, direct RC installation over Beta 8, two simulator copies, saved choices/models and a short RC in-sim panel/changelog check. These do not prove every aircraft, GPU, display or long flight. The 150% live layout check was not performed.
+
+Rendering is unchanged from Beta 9. Optional temporal AA and other preview features remain experimental. FSR 4.1.2 has known runtime compatibility limits; use FSR 3.1.6 if it fails. NR needs supported hardware and your own supported model, and can lower FPS. No NVIDIA DLLs or model weights are supplied. Independent multi-view FG is unfinished. The separate [Linux/Mac previews](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2.0.0-platform-preview.4) are unchanged; this Windows RC does not add their NR or FG support.
+
+GitHub marks this RC as a **Pre-release** because it is not final. In Manager its channel is **Release Candidates**, not Betas. Keep the supplied license notices and check the attached SHA256SUMS.txt. Private source provenance: `3241e4c3ec18c75c1557011c018d20d0dae03af0`. Public source archives contain download documentation only.
+
+Questions or bug reports: https://discord.gg/yh396QNgHZ
+
+
+---
+
 ## 2.0.0-beta.windows.9
 
 # Aerolux 2.0 Beta 9 (Windows)
