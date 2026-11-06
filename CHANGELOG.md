@@ -1,5 +1,41 @@
 # Changes
 
+## 2.0.0-beta.windows.8
+
+# Aerolux 2.0 Beta 8 (Windows)
+
+**Beta — still being tested.** Pure anti-aliasing, Boost upscaling and optional frame generation stay together in one mod.
+
+## What's new
+
+- **Aerolux Manager:** see your X-Plane copies, check the installed files, and install, repair or remove Aerolux for each copy. Close X-Plane before making changes. Picture settings stay in the in-sim panel.
+- **One update for the whole mod:** Native AA is now Pure inside Aerolux. This package retires its separate updater and keeps your AA choices. Setup only removes unchanged files it owns; edited and unknown files are protected.
+- **Read before updating:** the Updates window shows What's new for the exact version you would install. Its notice follows your selected channel.
+- **Settings backups:** save a backup yourself or let Manager save one before an update, repair, removal or restore. Restore puts back only Aerolux's own settings. Future updates can keep an earlier installer for going back one version; there is no earlier kept installer on the first update to Manager.
+- **Health and support:** check for damaged mod files, other Vulkan add-ons, disk space and files in use. Save a support report with personal details removed, then read it before sharing. It stays on your PC.
+- **New look:** a matching gold-and-purple Aerolux icon in Manager and the in-sim panel. The saved-report message now fits its box.
+
+## Install or update
+
+Close X-Plane and the old updater. Download **XPlane-FSR3-4-FrameGen-2.0.0-beta.windows.8-Setup.exe**, run it and keep the existing app folder when updating. Choose your X-Plane folder. The RAR contains the same installer if you prefer an archive.
+
+Start X-Plane normally, then open **Plugins > Aerolux > Open settings**. Choose **Pure** for native-resolution AA, **Boost** for FSR, or **Original** for X-Plane's own picture. Start with NR, frame generation and preview options Off. Use **?** for help and **Changelog** for changes.
+
+Existing FSR v2 Beta users can use the Betas channel. Separate Native AA users should run this installer once; their saved AA choices are kept. Updating from FSR 0.7.x: the old updater cannot find v2 after the repository rename. Run the new Setup.exe once; saved choices and local models are kept.
+
+## Testing and limits
+
+Windows build, regression, real-GPU fixture and installer checks passed. Limited live Manager checks and a short X-Plane FSR/panel check passed on one PC. These are not tests of every aircraft, GPU, display or long flight. Going back using a real earlier Manager installer still needs a later-version check. Rendering is unchanged from [Beta 7](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.7).
+
+FSR 4.1.2 has known runtime compatibility limits; use FSR 3.1.6 if it fails. NR and FG can cost performance. NR needs a supported GPU and your own supported model. No NVIDIA DLLs or model weights are included. Independent multi-view FG remains unfinished. The separate [Linux/Mac previews](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2.0.0-platform-preview.4) are unchanged; this Windows package does not add their NR or FG support.
+
+Private source provenance: `fe2c6b884faf5d3efd99f4f482bcb0f6b7347429`. Public source archives contain download documentation, not development source. Keep all supplied license notices. Verify downloads with the attached SHA256SUMS.txt.
+
+Questions or bug reports: https://discord.gg/yh396QNgHZ
+
+
+---
+
 ## 2.0.0-beta.windows.7
 
 **Windows Beta — Aerolux brings the FSR and Native AA mods together.** It is the next normal update on the existing Betas channel. Main / Release Candidates stay on 0.7.10.

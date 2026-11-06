@@ -1,12 +1,12 @@
-Aerolux — 2.0 BETA 7 (WINDOWS)
+Aerolux 2.0 Beta 8 (Windows)
 
 INSTALL
-1. Close X-Plane and the Plugin Updater.
+1. Close X-Plane and the Aerolux Manager (formerly Plugin Updater).
 2. Run the file ending in Setup.exe. If you chose the RAR, extract it completely and run its setup.
 3. Choose your X-Plane folder, the one containing X-Plane.exe. It may be on another drive. Keep your current mod app folder when updating.
 4. Start X-Plane with your normal shortcut or launcher and load a flight.
 5. Open Plugins > Aerolux > Open settings.
-Your image controls are inside X-Plane. The separate app only updates plugins.
+Your image controls are inside X-Plane. The separate Aerolux Manager installs, updates and backs up the mod; it never changes picture settings.
 
 Updating from 0.7.x: the old updater cannot find v2 after the repository rename.
 Run the new Setup.exe once; saved choices and imported models are kept.
@@ -37,7 +37,8 @@ Spare caches follow available video memory and 6/8/10/12/16/24/32 GB capacity ti
 The old cockpit-screen restore and green alignment tint are retired.
 
 UPDATES AND HELP
-Updates opens the optional plugin updater. Select Release Candidates or Betas. Automatic checks follow that channel and display a brief notice in sim when a newer build is available; the panel keeps an Update indicator. Checks run separately from rendering. You may check while flying, but close X-Plane before installing.
+Aerolux Manager (Start menu or desktop) has four pages. X-Plane copies lists every X-Plane 12 copy on this PC and can install, repair or remove Aerolux in each one. Updates checks your channel and shows What's new for the exact version you would install. Backups saves your settings before every update, repair, removal or restore, lets you restore them, and can go back one version once a version before this one has been kept. Health and support checks this PC and saves a support report with personal details removed; it is not sent anywhere. Close X-Plane before installing, repairing, removing or restoring.
+Updates opens the update window. Select Release Candidates or Betas. Automatic checks follow that channel and display a brief notice in sim when a newer build is available; the panel keeps an Update indicator. Checks run separately from rendering. You may check while flying, but close X-Plane before installing.
 Read Changelog inside the panel. Diagnostics opens current logs and report tools.
 Help: https://discord.gg/yh396QNgHZ
 
