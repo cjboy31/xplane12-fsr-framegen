@@ -6,7 +6,7 @@ FSR, Native AA and optional frame generation in one in-sim panel. Public downloa
 
 | Channel | Windows download |
 | --- | --- |
-| **Betas — latest features, still being tested** | [Aerolux 2.0 Beta 8 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v2.0.0-beta.windows.8/XPlane-FSR3-4-FrameGen-2.0.0-beta.windows.8-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.8) |
+| **Betas — latest features, still being tested** | [Aerolux 2.0 Beta 9 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v2.0.0-beta.windows.9/XPlane-FSR3-4-FrameGen-2.0.0-beta.windows.9-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.9) |
 | **Release Candidates — earlier tested baseline** | [0.7.10 installer](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v0.7.10/XPlane-FSR3-4-FrameGen-0.7.10-Setup.exe) · [Notes and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v0.7.10) |
 
 [Experimental Linux FSR 3.1 and Mac Metal preview 4](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2.0.0-platform-preview.4) · [Platform limits](docs/PLATFORM-STATUS.md). These keep their separate features; the Windows update does not replace them.
@@ -22,6 +22,8 @@ FSR, Native AA and optional frame generation in one in-sim panel. Public downloa
 Boost starts with FSR 3.1.6 and follows X-Plane's Rendering Resolution slider. Pure includes SMAA, FXAA, CMAA 2 and experimental temporal methods such as TAA + SMAA. Look adds optional sharpening and colour adjustments. Diagnostics has the raw/generated/total frame counter, current logs and report tools. Read the [installation guide](docs/INSTALLATION.md).
 
 **Moving from FSR v2:** this is a normal Beta update. Saved choices and local models are kept. **Moving from separate Native AA:** run this installer once; setup imports its settings and removes only unchanged owned files. Edited files are protected. **Moving from FSR 0.7.x:** run the new installer once because the old updater cannot find v2 after the repository rename.
+
+**Beta 9:** fixes a Manager message that called an older build "ready" after a channel change. [Beta 8](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.8) stays available.
 
 **Beta 8:** adds Aerolux Manager, settings backups, local health reports and matching icons. Native AA is Pure inside Aerolux; its separate updater is retired. [Previous Beta 7](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.7) stays available.
 

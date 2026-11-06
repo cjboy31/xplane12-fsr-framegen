@@ -1,5 +1,37 @@
 # Changes
 
+## 2.0.0-beta.windows.9
+
+# Aerolux 2.0 Beta 9 (Windows)
+
+**Beta — small hotfix for Beta 8.** Pure anti-aliasing, Boost upscaling and optional frame generation stay together in one mod.
+
+## What's fixed
+
+- **Aerolux Manager:** after you switch the update channel (for example from Betas to Release Candidates), the X-Plane copies page no longer says an older version "is ready". Switching channels can offer an older build. The Updates window still shows that build with its older-version warning, and you decide there.
+- Version names in the Manager show without a leading "v" (for example "0.7.10").
+
+Everything else is the same as [Beta 8](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.0.0-beta.windows.8): rendering, Pure, Boost, frame generation, NR, the in-sim panel and the rest of the Manager.
+
+## Install or update
+
+Beta 8 users get this as a normal update: open **Aerolux Manager**, then **Updates**, read **What's new** and install. Close X-Plane first. You can also download **XPlane-FSR3-4-FrameGen-2.0.0-beta.windows.9-Setup.exe** and run it, keeping your existing app folder. The RAR contains the same installer. Your settings, backups and local models are kept.
+
+Start X-Plane normally, then open **Plugins > Aerolux > Open settings**.
+
+## Testing and limits
+
+Windows build, the full regression suite, real-GPU frame generation checks and the installer install/update/uninstall/reinstall checks passed on one PC. The fix has an automated Manager window check; it was not separately re-flown or used live. Rendering is unchanged from Beta 8. Going back using a real earlier Manager installer still needs a later-version check.
+
+FSR 4.1.2 has known runtime compatibility limits; use FSR 3.1.6 if it fails. NR and FG can cost performance. NR needs a supported GPU and your own supported model. No NVIDIA DLLs or model weights are included. Independent multi-view FG remains unfinished. The separate [Linux/Mac previews](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/native-preview-2.0.0-platform-preview.4) are unchanged.
+
+Private source provenance: `f2f5b33ade497887c6dbda694c49926eb5d435fb`. Public source archives contain download documentation, not development source. Keep all supplied license notices. Verify downloads with the attached SHA256SUMS.txt.
+
+Questions or bug reports: https://discord.gg/yh396QNgHZ
+
+
+---
+
 ## 2.0.0-beta.windows.8
 
 # Aerolux 2.0 Beta 8 (Windows)

@@ -1,4 +1,4 @@
-Aerolux 2.0 Beta 8 (Windows)
+Aerolux 2.0 Beta 9 (Windows)
 
 INSTALL
 1. Close X-Plane and the Aerolux Manager (formerly Plugin Updater).
