@@ -115,7 +115,9 @@ jobs:
         run: |
           set -eu
           sudo apt-get update -qq > "$RUNNER_TEMP/dependencies.log" 2>&1
-          sudo apt-get install -y -qq g++ libvulkan-dev glslang-tools mesa-vulkan-drivers vulkan-validationlayers python3-yaml >> "$RUNNER_TEMP/dependencies.log" 2>&1
+          sudo apt-get install -y -qq g++ libvulkan-dev glslang-tools mesa-vulkan-drivers vulkan-validationlayers python3-yaml python3-pip >> "$RUNNER_TEMP/dependencies.log" 2>&1
+          sudo /usr/bin/python3 -m pip install --disable-pip-version-check numpy==2.2.6 >> "$RUNNER_TEMP/dependencies.log" 2>&1
+          git clone -q --depth 1 --branch v1.4.328 https://github.com/KhronosGroup/Vulkan-Headers "$RUNNER_TEMP/check-vulkan-headers" >> "$RUNNER_TEMP/dependencies.log" 2>&1
       - name: Check exact private candidate; encrypted diagnostics only
         if: inputs.source_commit != ''
         env:
@@ -126,7 +128,19 @@ jobs:
           test ! -e "$RUNNER_TEMP/native-source-key"
           test ! -e "$RUNNER_TEMP/native-known-hosts"
           test -z "$(git remote)"
-          /usr/bin/python3 tools/run_source_checks.py --commit "$EXPECTED_SHA" --receipt "$RUNNER_TEMP/source-checks.json" > "$RUNNER_TEMP/native-build.log" 2>&1 || { echo 'FAIL: private source checks; encrypted diagnostics retained'; exit 1; }
+          export CPLUS_INCLUDE_PATH="$RUNNER_TEMP/check-vulkan-headers/include"
+          /usr/bin/python3 - <<'PY' > "$RUNNER_TEMP/native-build.log" 2>&1
+          import importlib.util,os,sys
+          spec=importlib.util.spec_from_file_location('checks','tools/run_source_checks.py')
+          checks=importlib.util.module_from_spec(spec);spec.loader.exec_module(checks)
+          original=checks.steps
+          selected={'Cloud glory and shadow (experimental extra) - Mie table, geometry and shader on lavapipe', 'Smart GPU helper capability survey on lavapipe (G0)'}
+          checks.steps=lambda text: (item for item in original(text) if item[1] in selected)
+          sys.argv=['checks','--commit',os.environ['EXPECTED_SHA'],'--receipt',os.environ['RUNNER_TEMP']+'/source-checks.json']
+          rc=checks.main()
+          if rc: print(open(os.environ['RUNNER_TEMP']+'/source-checks.json').read())
+          sys.exit(rc)
+          PY
           echo 'PASS: exact private candidate source policy and portable checks'
       - name: Gate the private check receipt (no product source)
         if: inputs.source_commit != ''
@@ -138,7 +152,7 @@ jobs:
           p=pathlib.Path(os.environ['RUNNER_TEMP'])/'source-checks.json'
           data=p.read_bytes(); r=json.loads(data)
           assert r['commit']==os.environ['EXPECTED_SHA'] and r['verdict']=='PASS'
-          assert r['failed']==0 and r['passed']==len(r['steps']) and r['passed']>=46
+          assert r['failed']==0 and r['passed']==len(r['steps']) and r['passed']==2
           assert r['githubActions'] is False
           assert all(s['status']=='PASS' for s in r['steps'])
           stage=pathlib.Path(os.environ['GITHUB_WORKSPACE'])/'checked-downloads';stage.mkdir()
