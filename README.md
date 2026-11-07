@@ -8,7 +8,15 @@ Pure anti-aliasing, Boost upscaling and optional frame generation in one in-sim 
 
 RC2 includes the neural-rendering shader correction and camera-update recovery. This is a Release Candidate for final checks, not a final release. GitHub's Pre-release badge does not mean you need the Betas channel. Choose **Release Candidates** in Aerolux Manager.
 
-## Updating from a Beta
+## Optional Windows Beta
+
+**[Download Aerolux 2.1 Beta 1](https://github.com/cjboy31/xplane12-fsr-framegen/releases/download/v2.1.0-beta.windows.1/XPlane-FSR3-4-FrameGen-2.1.0-beta.windows.1-Setup.exe)** · [Beta changes, instructions and checksums](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.1.0-beta.windows.1)
+
+This opt-in Beta adds the single-GPU FG repair, Manager speed test and repair, hardware-aware controls and current NR previews. Frame generation uses X-Plane's graphics card; the experimental second-card path is retired. Select **Betas** in Manager for these updates. New options still need flight reports; NVIDIA-specific behavior is not yet hardware-tested. RC2 above remains the recommended Release Candidate.
+
+Close X-Plane and Manager, then run the chosen Setup into the existing app folder. **Do not uninstall first.** Settings, local models and enrolled simulator copies are kept. [Read the Beta's checks and limits](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.1.0-beta.windows.1).
+
+## Moving from an older Beta to RC
 
 1. Close X-Plane and Manager.
 2. Run the RC Setup above directly once. Keep the existing app folder and select your X-Plane folder. **Do not uninstall first.** Settings, local models and your enrolled simulator copies are kept.

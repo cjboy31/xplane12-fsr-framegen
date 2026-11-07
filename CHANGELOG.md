@@ -1,5 +1,17 @@
 # Changes
 
+## 2.1.0-beta.windows.1
+
+- **Single-GPU frame-generation repair:** frame generation now uses the same graphics card as X-Plane. The experimental second-card path and its menu have been removed. Older card selections move to the normal path, keeping your saved FG On/Off choice.
+- **Speed test and repair in Manager:** with X-Plane closed, measure Aerolux's own GPU work and check its picture. These times are not a prediction of X-Plane FPS. The app file check finds missing or changed mod files; Repair uses this version's kept Setup and backs up your choices first.
+- **Fast math Auto:** the own FSR 3 preview can use the fastest safe math measured for your card and driver. If those change, it uses a safe starting choice until you test again.
+- **Hardware-aware controls:** unsupported choices are greyed out with a short reason. Saved choices are kept. If your card cannot run a saved FSR 4 choice, FSR 3.1.6 runs instead. Graphics-card tips cover AMD, NVIDIA and Intel.
+- **NR fixes and previews:** corrected shader storage, safer preparation and shutdown, and a standard-NR fallback when the optional ACO bundle cannot run. Experimental native motion, cockpit protection, picture preparation, Smart NR speed, sharper centre and NR Look controls are included. Split view lets you compare NR on and off. NR still needs supported hardware and your own supported model.
+- **Other included work:** CPU-upgrade detection, experimental cloud glory and cloud shadow, and clearer recognition of X-Plane 12.4.3 / 12.4.4. Pure AA, Boost, Look and the existing preview controls remain included.
+- **NVIDIA low latency:** a Beta option using the public Vulkan extension with FG Off. It has not been tested on an NVIDIA card. Driver frame generation and Aerolux frame generation should not be used together; no driver settings are changed by this update.
+
+Windows Beta; [installation, validation and limits](https://github.com/cjboy31/xplane12-fsr-framegen/releases/tag/v2.1.0-beta.windows.1). RC2 and existing Linux/Mac previews stay available.
+
 ## 2.0.0-rc.2
 
 # Aerolux 2.0 Release Candidate 2
